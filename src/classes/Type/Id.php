@@ -22,7 +22,7 @@ class Id {
     /**
      * Creates a new identifier
      *
-     * @param int $id The numeric identifier
+     * @param float $id The numeric identifier
      */
     public function __construct($id = 0) {
         $this->id = is_numeric($id) ? $id : (int)$id;
