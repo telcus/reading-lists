@@ -29,7 +29,6 @@ class Title {
      * @param int|null $end_year
      * @param int $issue_count
      *
-     * @return null
      */
     public function __construct(\ReadingLists\Type\Id $title_id, $name, $start_year = null, $end_year = null, $issue_count = 0) {
         $this->setTitleId($title_id);
@@ -79,7 +78,6 @@ class Title {
      *
      * @param \ReadingLists\Type\Id $title_id The new title reference
      *
-     * @return null
      */
     protected function setTitleId(\ReadingLists\Type\Id $title_id) { $this->title_id = $title_id; }
 
@@ -88,7 +86,6 @@ class Title {
      *
      * @param string $name The new name
      *
-     * @return null
      */
     public function setName($name) { $this->name = $name; }
 
@@ -97,7 +94,6 @@ class Title {
      *
      * @param int|null $start_year The new start year
      *
-     * @return null
      */
     protected function setStartYear($start_year = null) { $this->start_year = $start_year; }
 
@@ -106,7 +102,6 @@ class Title {
      *
      * @param int|null $end_year The new end year
      *
-     * @return null
      */
     protected function setEndYear($end_year = null) { $this->end_year = $end_year; }
 
@@ -115,7 +110,6 @@ class Title {
      *
      * @param int $issue_count The new issue count
      *
-     * @return null
      */
     protected function setIssueCount($issue_count) { $this->issue_count = $issue_count; }
 
@@ -124,7 +118,6 @@ class Title {
      *
      * @param int $published_year The year the new issue was published
      *
-     * @return null
      */
     public function addIssue($published_year) {
         $this->setIssueCount($this->getIssueCount() + 1);
