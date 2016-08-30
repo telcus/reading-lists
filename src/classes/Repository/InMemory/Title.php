@@ -68,7 +68,7 @@ class Title implements \ReadingLists\Repository\ITitle {
         $page_offset = 0;
         if ($this->store->has('titles')) {
             foreach ($this->store->get('titles') as $title) {
-                if (!$constraints->isPaginated() || ($titles->count() < $constraints->getPageSize() && $page_offset >= $constraints->getPageOffset())) {
+                if (!$constraints || !$constraints->isPaginated() || ($titles->count() < $constraints->getPageSize() && $page_offset >= $constraints->getPageOffset())) {
                     $titles->addTitle($this->unloadTitle($title));
                 }
                 $page_offset++;
