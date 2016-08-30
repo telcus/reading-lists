@@ -21,6 +21,13 @@ interface ITitle {
     public function lookupTitles(\ReadingLists\Collection\Constraints $constraints = null);
 
     /**
+     * The number of titles that are in the repository
+     *
+     * @return int
+     */
+    public function countTitles();
+
+    /**
      * The title with the specific title id or null when no title found
      *
      * @param \ReadingLists\Type\Id $title_id The title reference of the title to find

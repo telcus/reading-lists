@@ -80,6 +80,13 @@ class Title implements \ReadingLists\Repository\ITitle {
     }
 
     /**
+     * The number of titles in the repository
+     */
+    public function countTitles() {
+        return $this->lookupTitles()->count();
+    }
+
+    /**
      * The title with the specific title id or null when no title found
      *
      * @param \ReadingLists\Type\Id $title_id The title id of the title to find
