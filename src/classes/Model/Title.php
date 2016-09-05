@@ -8,7 +8,7 @@ namespace ReadingLists\Model;
  * @package ReadingLists
  * @subpackage Model
  */
-class Title {
+class Title implements IModel {
     /** @var \ReadingLists\Type\Id The id of the title */
     protected $title_id;
     /** @var string The name of the title */
@@ -40,7 +40,7 @@ class Title {
 
     /**
      * The id of the title
-     * 
+     *
      * @return \ReadingLists\Type\Id
      */
     public function getTitleId() { return $this->title_id; }
