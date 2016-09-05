@@ -2,7 +2,7 @@
 
 /**
  * Loads any ReadingLists classes from the classes directory
- * 
+ *
  * After registering the autoload function with SPL, the following
  * line would cause the function to load the ReadingList\Title\Title class
  * from classes/Title/Title.php
