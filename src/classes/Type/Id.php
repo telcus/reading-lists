@@ -13,7 +13,7 @@ class Id {
     /** @var float The numeric identifier */
     protected $id = null;
 
-    /** 
+    /**
      * The id that represents a new identifier that must be exchanged
      * when stored in the repository
      */
@@ -28,7 +28,7 @@ class Id {
         $this->id = is_numeric($id) ? $id : (int)$id;
 
         if ($this->id < static::NEW_ID) {
-            $id = static::NEW_ID;
+            $this->id = static::NEW_ID;
         }
     }
 
@@ -41,13 +41,13 @@ class Id {
         return $this->id == static::NEW_ID;
     }
 
-    /** 
+    /**
      * Compares this identifier to another identifier
      *
      * @return bool
      */
     public function equals(Id $id) {
-        return $this->id = $id->getId();
+        return $this->id == $id->getId();
     }
 
     /**
