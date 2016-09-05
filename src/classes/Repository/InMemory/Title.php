@@ -8,19 +8,7 @@ namespace ReadingLists\Repository\InMemory;
  * @package ReadingLists
  * @subpackage Repository\InMemory
  */
-class Title implements \ReadingLists\Repository\ITitle {
-    /** @var \ReadingLists\Connection\InMemory The store for this repository */
-    protected $store;
-
-    /*
-     * Creates a new InMemory Title Repository
-     *
-     * @param \ReadingLists\Connection\InMemory $store The store for this repository
-     */
-    public function __construct(\ReadingLists\Connection\InMemory $store) {
-        $this->store = $store;
-    }
-
+class Title extends InMemory implements \ReadingLists\Repository\ITitle {
     /**
      * Takes an entry from the store and loads it as a title
      *
@@ -34,8 +22,8 @@ class Title implements \ReadingLists\Repository\ITitle {
         $issue_count = count($data['issues']);
 
         foreach ($data['issues'] as $issue) {
-            $start_year = $start_year == null || $issue['publish_year'] < $start_year ? $issue['publish_year'] : $start_year;
-            $end_year = $end_year == null || $issue['publish_year'] > $end_year ? $issue['publish_year'] : $end_year;
+            $start_year = $start_year == null || $issue['year'] < $start_year ? $issue['year'] : $start_year;
+            $end_year = $end_year == null || $issue['year'] > $end_year ? $issue['year'] : $end_year;
         }
 
         return new \ReadingLists\Model\Title(new \ReadingLists\Type\Id($data['id']), $data['name'], $start_year, $end_year, $issue_count);
@@ -69,7 +57,7 @@ class Title implements \ReadingLists\Repository\ITitle {
         if ($this->store->has('titles')) {
             foreach ($this->store->get('titles') as $title) {
                 if (!$constraints || !$constraints->isPaginated() || ($titles->count() < $constraints->getPageSize() && $page_offset >= $constraints->getPageOffset())) {
-                    $titles->addTitle($this->unloadTitle($title));
+                    $titles->addRecord($this->unloadTitle($title));
                 }
                 $page_offset++;
             }
